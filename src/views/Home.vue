@@ -1,18 +1,65 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="gradient-area">
+      <gradient/>
+    </div>
+    <div class="content-wrap">
+      <div class="content">
+        Hello!
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Gradient from '@/components/Gradient'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Gradient
   }
 }
 </script>
+
+<style lang="scss">
+.gradient-area {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+
+  @media only screen and (min-width: 321px) {
+    height: 300px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    height: 360px;
+  }
+
+  @media only screen  and (min-width : 1224px) {
+    height: 440px;
+  }
+}
+
+.content-wrap {
+  box-sizing: border-box;
+
+  @media only screen and (min-width: 321px) {
+    padding-top: 300px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 360px;
+  }
+
+  @media only screen  and (min-width : 1224px) {
+    padding-top: 440px;
+  }
+
+  .content {
+    height: 1000px;
+    background-color: #fff;
+  }
+}
+</style>
