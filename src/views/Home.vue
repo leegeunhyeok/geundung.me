@@ -1,11 +1,14 @@
 <template>
-  <div class="home">
+  <div class="home view">
     <div class="gradient-area">
       <gradient/>
     </div>
     <div class="content-wrap">
       <div class="content">
-        Hello!
+        Hello! A
+      </div>
+      <div class="content">
+        Hello! B
       </div>
     </div>
   </div>
@@ -23,27 +26,18 @@ export default {
 </script>
 
 <style lang="scss">
-.gradient-area {
-  position: absolute;
-  top: 60px;
-  left: 0px;
-  width: 100%;
+@import '@/assets/styles/common.scss';
 
-  @media only screen and (min-width: 321px) {
-    height: 300px;
-  }
-
-  @media only screen and (min-width: 768px) {
-    height: 360px;
-  }
-
-  @media only screen  and (min-width : 1224px) {
-    height: 440px;
-  }
+.home {
+  position: relative;
 }
 
 .content-wrap {
+  position: absolute;
+  width: 100%;
   box-sizing: border-box;
+  padding-top: 60px;
+  z-index: 10;
 
   @media only screen and (min-width: 321px) {
     padding-top: 300px;
@@ -58,8 +52,9 @@ export default {
   }
 
   .content {
-    height: 1000px;
+    height: 500px;
     background-color: #fff;
+    margin-bottom: 50px;
   }
 }
 </style>

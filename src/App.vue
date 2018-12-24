@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header/>
-    <router-view id="test"/>
+    <router-view/>
   </div>
 </template>
 
@@ -43,9 +43,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
-  #test {
-    padding-top: 60px;
-  }
 }
+
+html, body, #app, .view {
+  height: 100%;
+}
+
 </style>

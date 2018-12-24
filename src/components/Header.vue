@@ -1,7 +1,7 @@
 <template>
-  <div id="navbar">
+  <nav id="navbar">
     <a class="nav-brand">Geundung</a>
-  </div>
+  </nav>
 </template>
 
 <script>
