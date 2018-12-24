@@ -32,6 +32,7 @@ export default {
     font-family: 'Comfortaa';
     margin-left: 16px;
     float: left;
+    transition: font-size $font-transition;
 
     @media only screen and (min-width: 321px) {
       font-size: 1.4rem;
