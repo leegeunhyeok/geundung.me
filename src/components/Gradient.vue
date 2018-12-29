@@ -57,4 +57,5 @@ export default {
     background-position: -8000px;
   }
 }
+
 </style>

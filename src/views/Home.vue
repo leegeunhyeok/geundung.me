@@ -1,20 +1,18 @@
 <template>
   <div class="home view">
     <div class="gradient-area">
-      <div class="main-title-area">
-        <div class="main-title">Hello, world!</div>
-      </div>
+      <div class="main-title-area">Hello, world!</div>
       <gradient/>
     </div>
     <div class="content-wrap">
-      <div class="content">
+      <div class="content view">
         <div class="about slide-right-left">
           <div class="content-title">About me</div>
           sample
         </div>
       </div>
       <div class="content">
-        <div class="projects slide-left-right">
+        <div class="projects">
           <div class="content-title">Projects</div>
           sample
         </div>
@@ -31,16 +29,28 @@ export default {
   components: {
     Gradient
   },
-  methods: {
-    scrollHandler () {
-      console.log(window.pageYOffset || document.documentElement.scrollTop)
-    }
-  },
   mounted () {
     document.addEventListener('scroll', this.scrollHandler)
   },
   beforeDestroy () {
     document.removeEventListener('scroll', this.scrollHandler)
+  },
+  methods: {
+    scrollHandler () {
+      const scrollOffset = window.pageYOffset || document.documentElement.scrollTop
+      const els = document.getElementsByClassName('content')
+      for (let i = 0; i < els.length; i++) {
+        let top = els[i].getBoundingClientRect().top
+        if (top <= screen.height / 2 + scrollOffset + 100 && !els[i].classList.contains('view')) {
+          els[i].classList.add('view')
+          if (i % 2 === 0) {
+            els[i].children[0].classList.add('slide-right-left')
+          } else {
+            els[i].children[0].classList.add('slide-left-right')
+          }
+        }
+      }
+    }
   }
 }
 </script>
@@ -55,6 +65,7 @@ export default {
 .main-title-area {
   position: absolute;
   left: 50%;
+  width: 100%;
   transform: translate(-50%, 27.5rem);
   -webkit-transform: translate(-50%, 27.5rem);
   -moz-transform: translate(-50%, 27.5rem);
@@ -143,27 +154,30 @@ export default {
     }
 
     .about {
+      opacity: 0;
       height: 400px;
+      -webkit-animation: slide-right-left 1s 1.25s ease forwards;
+      -moz-animation: slide-right-left 1s 1.25s ease forwards;
+      animation: slide-right-left 1s 1.25s ease forwards;
     }
 
     .projects {
+      opacity: 0;
       height: 400px;
     }
   }
 }
 
 .slide-right-left {
-  opacity: 0;
-  -webkit-animation: slide-right-left 1.2s 1s ease forwards;
-  -moz-animation: slide-right-left 1.2s 1s ease forwards;
-  animation: slide-right-left 1.2s 1s ease forwards;
+  -webkit-animation: slide-right-left 1s ease forwards;
+  -moz-animation: slide-right-left 1s ease forwards;
+  animation: slide-right-left 1s ease forwards;
 }
 
 .slide-left-right {
-  opacity: 0;
-  -webkit-animation: slide-left-right 1.2s 1s ease forwards;
-  -moz-animation: slide-left-right 1.2s 1s ease forwards;
-  animation: slide-left-right 1.2s 1s ease forwards;
+  -webkit-animation: slide-left-right 1s ease forwards;
+  -moz-animation: slide-left-right 1s ease forwards;
+  animation: slide-left-right 1s ease forwards;
 }
 
 @keyframes slide-right-left {

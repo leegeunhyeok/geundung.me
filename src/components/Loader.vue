@@ -1,9 +1,13 @@
 <template>
-  <div id="loader">
-    <div class="loader-area" v-if="!$store.state.loaded">
-      <span></span>
+  <transition name="load">
+    <div id="loader">
+      <transition name="fade" mode="out-in">
+        <div class="loader-area" v-if="!loaded">
+          <span></span>
+        </div>
+      </transition>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -11,20 +15,28 @@ import Preloader from '../preloader'
 
 export default {
   name: 'loader',
+  data () {
+    return {
+      loaded: false
+    }
+  },
   created () {
-    this.load()
+    Preloader.regist(() => {
+      this.load()
+    }).preload()
   },
   methods: {
     load () {
-      Preloader.regist(() => {
+      this.loaded = true
+      setTimeout(() => {
         this.$store.commit('LOAD')
-      }).preload()
+      }, 500)
     }
   }
 }
 </script>
 
-<style  lang="scss">
+<style lang="scss">
 @import '@/assets/styles/common.scss';
 
 #loader {
@@ -110,6 +122,7 @@ export default {
   }
 }
 
+// 로딩 스피너 애니메이션
 @-webkit-keyframes loader {
   0% {
     transform: rotate(0deg);
@@ -140,6 +153,7 @@ export default {
   }
 }
 
+// 로딩 텍스트 애니메이션
 @-webkit-keyframes loader-text {
   0% {
     text-shadow: 0px 0px 5px #fff;
@@ -169,4 +183,14 @@ export default {
     text-shadow: 0px 0px 20px #fff;
   }
 }
+
+// load 트랜지션
+.load-enter-active, .load-leave-active {
+  transition: 1s;
+}
+
+.load-enter, .load-leave-to {
+  transform: translateY(-100%);
+}
+
 </style>

@@ -16,6 +16,7 @@ export default {
 <style lang="scss">
 @import '@/assets/styles/common.scss';
 
+// 상단바는 항상 고정
 #navbar {
   position: fixed;
   top: 0;
@@ -33,6 +34,7 @@ export default {
     margin-left: 16px;
     float: left;
     transition: font-size $font-transition;
+    opacity: 0;
 
     @media only screen and (min-width: 321px) {
       font-size: 1.4rem;
@@ -45,6 +47,28 @@ export default {
     @media only screen  and (min-width : 1224px) {
       font-size: 1.8rem;
     }
+
+    -webkit-animation: brand 1s 1.5s forwards;
+    -moz-animation: brand 1s 1.5s forwards;
+    animation: brand 1s 1.5s forwards;
+  }
+}
+
+@-webkit-keyframes brand {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes brand {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes brand {
+  100% {
+    opacity: 1;
   }
 }
 </style>

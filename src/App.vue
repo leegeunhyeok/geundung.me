@@ -3,9 +3,7 @@
     <app-header/>
     <router-view v-show="$store.state.loaded"/>
     <app-footer/>
-    <transition name="load">
-      <app-loader v-if="!$store.state.loaded"/>
-    </transition>
+    <app-loader v-if="!$store.state.loaded"/>
   </div>
 </template>
 
@@ -56,11 +54,12 @@ html, body, #app {
   height: 100%;
 }
 
-.load-enter-active, .load-leave-active {
+// fade 트랜지션
+.fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.load-enter, .load-leave-to {
+
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
-
 </style>
