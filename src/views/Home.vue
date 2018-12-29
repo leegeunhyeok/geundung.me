@@ -7,7 +7,7 @@
     <div class="content-wrap">
       <div class="content view">
         <div class="about slide-right-left">
-          <div class="content-title">About me</div>
+          <h1 class="content-title">About me</h1>
           <div class="profile-image">
             <img src="@/assets/profile.png">
           </div>
@@ -24,19 +24,45 @@
             </li>
           </ul>
           <div class="my-detail-info">
-            Sample
+            <div class="info-item red">
+              <font-awesome-icon :icon="['far', 'heart']"/>
+              <br>
+              <b>Motto</b>
+              <p>
+                <b>"항상 포기하지 말자"</b>라는 좌우명을 가지고 있습니다. 어떤 일이던 어려움은 항상 있기 마련이죠.
+                어려움을 극복하면 스스로에게 큰 보상이 되기 때문에 열정을 잃지 않고 열심히 도전하고 있습니다.
+              </p>
+            </div>
+            <div class="info-item yellow">
+              <font-awesome-icon :icon="['fas', 'desktop']"/>
+              <br>
+              <b>Programming</b>
+              <p>
+                중학교 때 처음 프로그래밍을 접한 이후로 C, Java, Python 등 다양한 언어를 접하고 배워왔습니다.
+                알고리즘을 통해 생각하는 방법을 배웠고, 새로운 기술에 대해 관심이 많습니다.
+              </p>
+            </div>
+            <div class="info-item green">
+              <font-awesome-icon :icon="['fas', 'globe']"/>
+              <br>
+              <b>Web</b>
+              <p>
+                HTML, CSS, Javascript를 사용한 기본적인 웹 개발을 배우며 웹 분야에 많은 관심이 생겼습니다.
+                현재는 최신 웹 개발에 사용되는 Webpack과 같은 번들러, Vue.js와 같은 SPA 프레임워크를 열심히 배우고 있습니다.
+              </p>
+            </div>
           </div>
         </div>
       </div>
       <div class="content">
         <div class="skills">
-          <div class="content-title">Skills</div>
+          <h1 class="content-title">Skills</h1>
           sample
         </div>
       </div>
       <div class="content">
         <div class="projects">
-          <div class="content-title">Projects</div>
+          <h1 class="content-title">Projects</h1>
           sample
         </div>
       </div>
@@ -62,19 +88,16 @@ export default {
   },
   methods: {
     scrollHandler () {
-      // 스크롤 위치
-      const scrollOffset = window.pageYOffset || document.documentElement.scrollTop
-
       // 모든 .content 엘리먼트
       const els = document.getElementsByClassName('content')
 
       for (let i = 0; i < els.length; i++) {
         // content의 top 위치
-        let top = els[i].getBoundingClientRect().top
+        let top = els[i].getBoundingClientRect().top + 200
 
         // 해당 content의 위치가 스크린 위치의 세로 80% 위치인 경우 and
         // view 클래스가 없는 경우 슬라이드 애니메이션 적용
-        if (top <= screen.height * 0.8 + scrollOffset && !els[i].classList.contains('view')) {
+        if (top - screen.height <= 0 && !els[i].classList.contains('view')) {
           els[i].classList.add('view')
           if (i % 2 === 0) {
             els[i].children[0].classList.add('slide-right-left')
@@ -112,7 +135,7 @@ export default {
   font-family: 'Comfortaa', 'Avenir', sans-serif, Tahoma;
   font-size: 1.8rem;
 
-  @media only screen and (min-width: 321px) {
+  @media only screen and (min-width: 320px) {
     top: 10.3125rem;
   }
 
@@ -155,7 +178,7 @@ export default {
   margin-bottom: 100px;
   transition: margin-top .3s;
 
-  @media only screen and (min-width: 321px) {
+  @media only screen and (min-width: 320px) {
     margin-top: 300px;
   }
 
@@ -175,7 +198,7 @@ export default {
 
     .content-title {
 
-      @media only screen and (min-width: 321px) {
+      @media only screen and (min-width: 320px) {
         font-size: 1.5rem;
       }
 
@@ -190,12 +213,12 @@ export default {
       font-weight: bold;
       font-family: 'Comfortaa', 'Avenir', sans-serif, Tahoma;
       color: #2c3e50;
+      margin: 0;
       transition: $font-transition;
     }
 
     .about {
       opacity: 0;
-      height: 400px;
 
       .profile-image {
         margin: 25px 0;
@@ -231,6 +254,77 @@ export default {
         }
       }
 
+      .my-detail-info {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        margin-top: 25px;
+        
+        @media only screen and (min-width: 320px) {
+          flex-direction: column;
+          padding: 0 5%;
+        }
+
+        @media only screen and (min-width: 768px) {
+          flex-direction: row;
+          padding: 0 5%;
+        }
+
+        @media only screen  and (min-width : 1224px) {
+          flex-direction: row;
+          padding: 0 10%;
+        }
+
+        .info-item {
+          width: 100%;
+
+          svg { 
+            padding: 10px;
+            font-size: 2rem;
+            width: 4rem;
+            height: 4rem;
+            line-height: 4.5rem;
+            border-radius: 10px;
+            border: 3px solid #ddd;
+            transition: .3s;
+          }
+
+          b {
+            margin: 10px 0;
+            transition: .3s;
+          }
+
+          &.red:hover {
+            color: #e73c7e;
+          }
+
+          &.yellow:hover {
+            color: #e6dd5f;
+          }
+
+          &.green:hover {
+            color: #23d5ab;
+          }
+
+          p {
+            color: #888;
+            line-height: 150%;
+
+            @media only screen and (min-width: 320px) {
+              padding: 5%;
+            }
+
+            @media only screen and (min-width: 768px) {
+              padding: 0 15%;
+            }
+
+            @media only screen  and (min-width : 1224px) {
+              padding: 0 22%;
+            }
+          }
+        }
+      }
+
       -webkit-animation: slide-right-left 1s 1.25s ease forwards;
       -moz-animation: slide-right-left 1s 1.25s ease forwards;
       animation: slide-right-left 1s 1.25s ease forwards;
@@ -238,12 +332,10 @@ export default {
 
     .skills {
       opacity: 0;
-      height: 400px;
     }
 
     .projects {
       opacity: 0;
-      height: 400px;
     }
   }
 }

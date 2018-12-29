@@ -33,7 +33,7 @@ export default {
     transition: font-size $font-transition;
     opacity: 0;
 
-    @media only screen and (min-width: 321px) {
+    @media only screen and (min-width: 320px) {
       font-size: 1.4rem;
     }
 

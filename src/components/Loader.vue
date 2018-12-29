@@ -56,7 +56,7 @@ export default {
     border-radius: 50%;
     background: linear-gradient(#23a6d5, #23d5ab, #ebe15e, #ebe15e, #ee7752, #e73c7e);
 
-    @media only screen and (min-width: 321px) {
+    @media only screen and (min-width: 320px) {
       width: 200px;
       height: 200px;
     }
@@ -92,7 +92,7 @@ export default {
       color: #fff;
       font-weight: bold;
 
-      @media only screen and (min-width: 321px) {
+      @media only screen and (min-width: 320px) {
         left: 10px;
         right: 10px;
         top: 10px;
