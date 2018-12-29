@@ -62,4 +62,25 @@ html, body, #app {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.javascript {
+  color: #efd81d
+}
+
+.node-js {
+  color: #43853d;
+}
+
+.vue-js {
+  color: #35495e;
+}
+
+.python {
+  color: #3974a4;
+}
+
+.java {
+  color: #f0931c;
+}
+
 </style>

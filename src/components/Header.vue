@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/common.scss';
+@import "@/assets/styles/common.scss";
 
 // 상단바는 항상 고정
 #navbar {
