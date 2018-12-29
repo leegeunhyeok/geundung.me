@@ -8,6 +8,29 @@
       <div class="content view">
         <div class="about slide-right-left">
           <div class="content-title">About me</div>
+          <div class="profile-image">
+            <img src="@/assets/profile.png">
+          </div>
+          <ul class="my-information">
+            <li>
+              <b>이근혁</b>
+            </li>
+            <br>
+            <li class="clickable" @click="mail">
+              <font-awesome-icon :icon="['far', 'envelope']"/> lghlove0509@naver.com
+            </li>
+            <li class="clickable" @click="openUrl('https://github.com/leegeunhyeok')">
+              <font-awesome-icon :icon="['fab', 'github']"/> Leegeunhyeok
+            </li>
+          </ul>
+          <div class="my-detail-info">
+            Sample
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="skills">
+          <div class="content-title">Skills</div>
           sample
         </div>
       </div>
@@ -60,6 +83,12 @@ export default {
           }
         }
       }
+    },
+    openUrl (url) {
+      window.open(url)
+    },
+    mail () {
+      window.open('mailto:lghlove0509@naver.com')
     }
   }
 }
@@ -139,6 +168,7 @@ export default {
   }
 
   .content {
+    font-family: 'NanumSquareRound', 고딕;
     padding: 10px;
     background-color: #fff;
     overflow-x: hidden;
@@ -166,9 +196,49 @@ export default {
     .about {
       opacity: 0;
       height: 400px;
+
+      .profile-image {
+        margin: 25px 0;
+
+        img {
+          border-radius: 50%;
+          border: 5px solid #fff;
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, .5);
+        }
+      }
+
+      .my-information {
+        display: inline-block;
+        padding: 0;
+
+        li {
+          cursor: default;
+          list-style: none;
+          line-height: 150%;
+
+          &.clickable {
+            cursor: pointer;
+            transition: .3s;
+
+            &:hover {
+              color: dodgerblue;
+            }
+          }
+        }
+
+        li:nth-child(1) {
+          font-size: 1.2rem;
+        }
+      }
+
       -webkit-animation: slide-right-left 1s 1.25s ease forwards;
       -moz-animation: slide-right-left 1s 1.25s ease forwards;
       animation: slide-right-left 1s 1.25s ease forwards;
+    }
+
+    .skills {
+      opacity: 0;
+      height: 400px;
     }
 
     .projects {
@@ -209,4 +279,5 @@ export default {
     transform: translateX(0px);
   }
 }
+
 </style>
