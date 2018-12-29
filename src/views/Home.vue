@@ -30,18 +30,28 @@ export default {
     Gradient
   },
   mounted () {
+    // 마운트 이후 스크롤 리스너 등록
     document.addEventListener('scroll', this.scrollHandler)
   },
   beforeDestroy () {
+    // 컴포넌트 파괴 전 등록했던 리스너 제거
     document.removeEventListener('scroll', this.scrollHandler)
   },
   methods: {
     scrollHandler () {
+      // 스크롤 위치
       const scrollOffset = window.pageYOffset || document.documentElement.scrollTop
+
+      // 모든 .content 엘리먼트
       const els = document.getElementsByClassName('content')
+
       for (let i = 0; i < els.length; i++) {
+        // content의 top 위치
         let top = els[i].getBoundingClientRect().top
-        if (top <= screen.height / 2 + scrollOffset + 100 && !els[i].classList.contains('view')) {
+
+        // 해당 content의 위치가 스크린 위치의 세로 80% 위치인 경우 and
+        // view 클래스가 없는 경우 슬라이드 애니메이션 적용
+        if (top <= screen.height * 0.8 + scrollOffset && !els[i].classList.contains('view')) {
           els[i].classList.add('view')
           if (i % 2 === 0) {
             els[i].children[0].classList.add('slide-right-left')

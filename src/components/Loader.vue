@@ -21,11 +21,13 @@ export default {
     }
   },
   created () {
+    // 이미지 프리로드
     Preloader.regist(() => {
       this.load()
     }).preload()
   },
   methods: {
+    // vuex 로딩 상태 변경
     load () {
       this.loaded = true
       setTimeout(() => {
