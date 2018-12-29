@@ -1,20 +1,25 @@
 <template>
   <div id="app">
     <app-header/>
-    <router-view/>
+    <router-view v-show="$store.state.loaded"/>
     <app-footer/>
+    <transition name="load">
+      <app-loader v-if="!$store.state.loaded"/>
+    </transition>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import Loader from '@/components/Loader.vue'
 
 export default {
   name: 'app',
   components: {
     'app-header': Header,
-    'app-footer': Footer
+    'app-footer': Footer,
+    'app-loader': Loader
   }
 }
 </script>
@@ -49,6 +54,13 @@ export default {
 
 html, body, #app {
   height: 100%;
+}
+
+.load-enter-active, .load-leave-active {
+  transition: opacity .5s;
+}
+.load-enter, .load-leave-to {
+  opacity: 0;
 }
 
 </style>
