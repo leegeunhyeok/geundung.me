@@ -9,6 +9,7 @@ const dist = path.join(__dirname, '../', 'dist')
 
 app.use('/css', express.static(path.join(dist, 'css')))
 app.use('/fonts', express.static(path.join(dist, 'fonts')))
+app.use('/img', express.static(path.join(dist, 'img')))
 app.use('/js', express.static(path.join(dist, 'js')))
 
 app.get('/', (req, res) => {
