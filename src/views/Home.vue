@@ -81,15 +81,15 @@
                   <p>
                     <ul class="list">
                       <li>
-                        <font-awesome-icon :icon="['fab', 'js']" class="javascript"/> 
+                        <font-awesome-icon :icon="['fab', 'js']" class="javascript"/>
                         기본 개념 (호이스팅, 클로저 등), ES6 문법
                       </li>
                       <li>
-                        <font-awesome-icon :icon="['fab', 'node-js']" class="node-js"/> 
+                        <font-awesome-icon :icon="['fab', 'node-js']" class="node-js"/>
                         Express 웹 서버, Rest API 서버, 웹 크롤러
                       </li>
                       <li>
-                        <font-awesome-icon :icon="['fab', 'vuejs']" class="vue-js"/> 
+                        <font-awesome-icon :icon="['fab', 'vuejs']" class="vue-js"/>
                         Vue.js 반응형 SPA (Single Page Application)
                       </li>
                     </ul>
@@ -107,7 +107,7 @@
                   <p>
                     <ul class="list">
                       <li>
-                        <font-awesome-icon :icon="['fab', 'python']" class="python"/> 
+                        <font-awesome-icon :icon="['fab', 'python']" class="python"/>
                         간단한 자동화 프로그램, 웹 크롤러
                       </li>
                     </ul>
@@ -124,7 +124,7 @@
                   <p>
                     <ul class="list">
                       <li>
-                        <font-awesome-icon :icon="['fab', 'java']" class="java"/> 
+                        <font-awesome-icon :icon="['fab', 'java']" class="java"/>
                         Swing 또는 JavaFX를 이용한 GUI 프로그램, 멀티 쓰레드 제어
                       </li>
                     </ul>
@@ -391,7 +391,7 @@ export default {
         justify-content: space-around;
         text-align: center;
         margin-top: 25px;
-        
+
         @media only screen and (min-width: 320px) {
           flex-direction: column;
           padding: 0 5%;
@@ -410,7 +410,7 @@ export default {
         .info-item {
           width: 100%;
 
-          svg { 
+          svg {
             padding: 10px;
             font-size: 2rem;
             width: 4rem;
@@ -486,7 +486,7 @@ export default {
           padding-right: 35px;
           border: 3px solid #eee;
           border-radius: 16px;
-          
+
           @media only screen and (min-width: 320px) {
             width: 100%;
           }
@@ -641,8 +641,6 @@ export default {
     transform: translateX(0px);
   }
 }
-
-
 
 .list {
   margin: 0;
