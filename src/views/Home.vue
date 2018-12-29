@@ -576,8 +576,6 @@ export default {
         }
 
         .skill-detail {
-          max-height: 210px;
-
           @media only screen and (min-width: 320px) {
             width: 100%;
             margin-top: 25px;
