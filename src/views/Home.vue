@@ -400,7 +400,7 @@ export default {
           }
 
           &.yellow:hover {
-            color: #e6dd5f;
+            color: #f7b438;
           }
 
           &.green:hover {
@@ -449,7 +449,6 @@ export default {
         .ability-chart {
           display: inline-block;
           box-sizing: border-box;
-          padding: 10px;
 
           @media only screen and (min-width: 320px) {
             padding: 10px 25px;
@@ -457,6 +456,7 @@ export default {
           }
 
           @media only screen and (min-width: 768px) {
+            padding: 10px;
             padding-right: 35px;
           }
 
