@@ -1,7 +1,7 @@
 <template>
   <div class="project-item">
     <div class="project-thumbnail" @mouseover="hover = true" @mouseout="hover = false">
-      <img src="@/assets/p3_coidroid.png">
+      <img :src="'/assets/' + data.thumbnail">
       <transition name="fade" mode="out-in">
         <div class="mask" v-if="hover" @click="showDetail">
           <div class="text">{{ data.description }}</div>

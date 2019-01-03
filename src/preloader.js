@@ -19,7 +19,7 @@ preloader._handler = function () {
 preloader.preload = function () {
   this._imageList.forEach(img => {
     let preloadImage = new Image()
-    preloadImage.src = img
+    preloadImage.src = `/assets/${img}`
     preloadImage.onload = this._handler.bind(this)
     preloadImage.onerror = this._handler.bind(this)
   })

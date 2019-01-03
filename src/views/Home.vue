@@ -656,7 +656,7 @@ export default {
       .projects-wrap {
         display: flex;
         flex-wrap: wrap;
-        
+
         @media only screen and (min-width: 320px) {
           flex-direction: column;
         }
