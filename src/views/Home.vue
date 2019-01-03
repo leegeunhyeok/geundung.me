@@ -61,7 +61,7 @@
         <div class="ability">
           <div class="ability-content">
             <Tab :tabs="tabs" @tabChange="tabChange"/>
-            <transition name="fade" mode="out-in">
+            <transition name="fade-height" mode="out-in">
               <div class="tab-item" :key="0" v-if="activeTab === 0">
                 <h2>Language</h2>
                 <div class="ability-chart">
@@ -99,7 +99,9 @@
       <div class="content">
         <div class="projects">
           <h1 class="content-title">Projects</h1>
-          sample
+          <div class="projects-wrap">
+            <ProjectItem v-for="(project, i) of projects" :key="i" :data="project" :index="i + 1" />
+          </div>
         </div>
       </div>
     </div>
@@ -107,14 +109,18 @@
 </template>
 
 <script>
+import ProjectModel from '@/model/project'
+
 import Gradient from '@/components/Gradient'
 import Tab from '@/components/Tab'
+import ProjectItem from '@/components/ProjectItem'
 
 export default {
   name: 'home',
   components: {
     Gradient,
-    Tab
+    Tab,
+    ProjectItem
   },
   data () {
     return {
@@ -153,7 +159,8 @@ export default {
         { name: 'Skills', target: 2 }
       ],
       activeTab: 0,
-      abilityTitle: 'Skills'
+      abilityTitle: 'Skills',
+      projects: ProjectModel
     }
   },
   created () {
@@ -645,6 +652,20 @@ export default {
 
     .projects {
       opacity: 0;
+
+      .projects-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        
+        @media only screen and (min-width: 320px) {
+          flex-direction: column;
+        }
+
+        @media only screen and (min-width: 768px), (min-width : 1224px) {
+          flex-direction: row;
+          justify-content: space-around;
+        }
+      }
     }
   }
 }

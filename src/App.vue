@@ -56,11 +56,20 @@ html, body, #app {
 
 // fade 트랜지션
 .fade-enter-active, .fade-leave-active {
+  transition: .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+// fade + height 트랜지션
+.fade-height-enter-active, .fade-height-leave-active {
   max-height: 500px;
   transition: .8s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-height-enter, .fade-height-leave-to {
   max-height: 0;
   opacity: 0;
 }

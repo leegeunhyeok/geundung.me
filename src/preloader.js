@@ -1,10 +1,8 @@
-const debug = true
+import ProjectModel from '@/model/project'
 
 const preloader = {}
 preloader._loaded = 0
-preloader._imageList = [
-  'aa.png'
-]
+preloader._imageList = ProjectModel.map(img => img.thumbnail)
 
 preloader.regist = function (callback) {
   this._callback = callback
@@ -22,7 +20,7 @@ preloader.preload = function () {
   const time = new Date().getTime()
   this._imageList.forEach(img => {
     let preloadImage = new Image()
-    preloadImage.src = debug ? `${img}?${time}` : img
+    preloadImage.src = img
     preloadImage.onload = this._handler.bind(this)
     preloadImage.onerror = this._handler.bind(this)
   })
