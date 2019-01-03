@@ -17,7 +17,6 @@ preloader._handler = function () {
 }
 
 preloader.preload = function () {
-  const time = new Date().getTime()
   this._imageList.forEach(img => {
     let preloadImage = new Image()
     preloadImage.src = img
