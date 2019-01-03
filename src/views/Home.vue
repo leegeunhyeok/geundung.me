@@ -1,7 +1,10 @@
 <template>
   <div class="home view">
     <div class="gradient-area">
-      <div class="main-title-area">Hello, world!</div>
+      <div class="main-title-area">
+        {{ HelloWorld }}
+        <div class="cursor"></div>
+      </div>
       <gradient/>
     </div>
     <div class="content-wrap">
@@ -48,123 +51,38 @@
               <b>Web</b>
               <p>
                 HTML, CSS, Javascript를 사용한 기본적인 웹 개발을 배우며 웹 분야에 많은 관심이 생겼습니다.
-                모바일 환경과 데스크탑 환경을 넘나들기 위해 반응형 웹 디자인을 선호하는 편입니다.
+                모바일 환경과 데스크탑 환경을 넘나들기 위해 <b>반응형 웹 디자인</b>을 선호하는 편입니다.
               </p>
             </div>
           </div>
         </div>
       </div>
       <div class="content">
-        <div class="skills">
-          <h1 class="content-title">Skills</h1>
-          <div class="skill-content">
-            <div class="skill-chart">
-              <div class="chart-line" v-for="(skill, i) of skills" :key="i">
-                <div class="chart-name">{{ skill.name }}</div>
-                <div class="chart-line-color" :class="skill.color" :style="'width:' + skill.value + '%'"></div>
-                <div class="chart-point" :class="skill.color" :style="'top: -5px; left:' + skill.value + '%'"></div>
+        <div class="ability">
+          <div class="ability-content">
+            <Tab :tabs="tabs" @tabChange="tabChange"/>
+            <transition name="fade" mode="out-in">
+              <div class="tab-item" :key="0" v-if="activeTab === 0">
+                <h2>Language</h2>
+                <div class="ability-chart">
+                  <div class="chart-line" v-for="(language, i) of language" :key="i">
+                    <div class="chart-name">{{ language.name }}</div>
+                    <div class="chart-line-color" :class="language.color" :style="'width:' + language.value + '%'"></div>
+                    <div class="chart-point" :class="language.color" :style="'top: -5px; left:' + language.value + '%'"></div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="skill-detail">
-              <Tab :tabs="tabs" @tabChange="tabChange"/>
-              <transition name="fade" mode="out-in">
-                <div class="tab-item" :key="0" v-if="activeTab === 0">
-                  <h2>Javascript</h2>
-                  <p style="line-height: 150%">
-                    웹 개발을 배우며 함께 익힌 자바스크립트 입니다.
-                    현재 기술의 발전으로 웹 브라우저 뿐만 아니라 <b class="node-js">Node.js</b> 플랫폼에서도
-                    자바스크립트를 사용하여 개발할 수 있을만큼 강력한 언어가 되었습니다.
-                    <b class="node-js">Node.js</b> 웹 서버를 구축하고, DB를 연동하는 등 기본적인 웹서버를 구축할 수 있습니다.
-                    또한 <b class="vue-js">Vue.js</b> 프레임워크를 사용하여 SPA 웹 페이지를 개발할 수 있습니다.
-                  </p>
-                  <h3>개발 능력</h3>
-                  <p>
-                    <ul class="list">
-                      <li>
-                        <font-awesome-icon :icon="['fab', 'js']" class="javascript"/>
-                        기본 개념 (호이스팅, 클로저 등), ES6 문법
-                      </li>
-                      <li>
-                        <font-awesome-icon :icon="['fab', 'node-js']" class="node-js"/>
-                        Express 웹 서버, Rest API 서버, 웹 크롤러
-                      </li>
-                      <li>
-                        <font-awesome-icon :icon="['fab', 'vuejs']" class="vue-js"/>
-                        Vue.js 반응형 SPA (Single Page Application)
-                      </li>
-                    </ul>
-                  </p>
+              <div class="tab-item" :key="1" v-if="activeTab === 1">
+                <h2>Skills</h2>
+                <div class="ability-chart">
+                  <div class="chart-line" v-for="(skill, i) of skills" :key="i">
+                    <div class="chart-name">{{ skill.name }}</div>
+                    <div class="chart-line-color" :class="skill.color" :style="'width:' + skill.value + '%'"></div>
+                    <div class="chart-point" :class="skill.color" :style="'top: -5px; left:' + skill.value + '%'"></div>
+                  </div>
                 </div>
-                <div class="tab-item" :key="1" v-if="activeTab === 1">
-                  <h2>Python</h2>
-                  <p>
-                    파이썬의 심플함을 보고 접하게 된 언어입니다.
-                    많은 경험이 있는 언어는 아니지만, 기본적인 프로그램 정도는 작성할 수 있는 수준입니다.
-                    인공지능 분야가 궁금해서 Numpy, Tensorflow를 사용하여 간단한 손글씨 인식 프로그램도 작성 해 보았습니다.
-                    주로 간단한 업무 자동화나 웹 크롤링 개발에 사용하고 있습니다.
-                  </p>
-                  <h3>개발 능력</h3>
-                  <p>
-                    <ul class="list">
-                      <li>
-                        <font-awesome-icon :icon="['fab', 'python']" class="python"/>
-                        간단한 자동화 프로그램, 웹 크롤러
-                      </li>
-                    </ul>
-                  </p>
-                </div>
-                <div class="tab-item" :key="2" v-if="activeTab === 2">
-                  <h2>Java</h2>
-                  <p>
-                    C언어 독학 후 배운 첫 객체지향 언어입니다.
-                    객체지향에 대한 개념을 익히는 계기가 되었고, 다양한 개인 프로젝트도 진행했습니다.
-                    되돌아보면 별 것 아니지만 지금까지 성장하게 된 중요한 발판이었던 것 같습니다.
-                  </p>
-                  <h3>개발 능력</h3>
-                  <p>
-                    <ul class="list">
-                      <li>
-                        <font-awesome-icon :icon="['fab', 'java']" class="java"/>
-                        Swing 또는 JavaFX를 이용한 GUI 프로그램, 멀티 쓰레드 제어
-                      </li>
-                    </ul>
-                  </p>
-                </div>
-                <div class="tab-item" :key="3" v-if="activeTab === 3">
-                  <h2>C/C++</h2>
-                  <p>
-                    처음 프로그래밍을 접할 때 배운 언어입니다.
-                    변수, 반복문, 포인터 등 중요한 개념을 탄탄히 익혔습니다. 이를 계기로 이후에 프로그래밍 언어를 배울 때
-                    빠르게 습득할 수 있었으며 컴퓨터에 대한 이해를 더 쉽게 할 수 있게 되었습니다.
-                    또한 알고리즘 문제 풀이는 주로 C언어를 사용하며 종종 사용하고 있습니다.
-                  </p>
-                  <h3>개발 능력</h3>
-                  <p>
-                    <ul class="list">
-                      <li>알고리즘 문제 풀이</li>
-                      <li>CUI 콘솔 게임 개발</li>
-                    </ul>
-                  </p>
-                </div>
-                <div class="tab-item" :key="4" v-if="activeTab === 4">
-                  <h2>SQL</h2>
-                  <p>
-                    MySQL (MariaDB), Oracle 등 RDBMS를 접하며 익혀왔습니다.
-                    실제 개발 환경에선 데이터베이스가 없으면 안 될 만큼 중요한 핵심 요소 중 하나라는 것을 느껴,
-                    다양한 개인 프로젝트를 진행하며 Join, SubQuery 등 기본 문법을 확실하게 다졌습니다.
-                  </p>
-                  <h3>사용 경험</h3>
-                  <p>
-                    <ul class="list">
-                      <li>MySQL</li>
-                      <li>MariaDB</li>
-                      <li>Oracle</li>
-                      <li>MongoDB (NoSQL)</li>
-                    </ul>
-                  </p>
-                </div>
-              </transition>
-            </div>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
@@ -190,32 +108,73 @@ export default {
   },
   data () {
     return {
-      skills: [
+      write: false,
+      HelloWorld: '',
+      HelloWorldList: [
+        'Hello, World!',
+        'AA!',
+        'BB!',
+        'CC!'
+      ],
+      HelloWorldIndex: 0,
+      language: [
         { name: 'Javascript', value: 80, color: 'red' },
-        { name: 'Python', value: 50, color: 'green' },
-        { name: 'Java', value: 60, color: 'orange' },
-        { name: 'C/C++', value: 40, color: 'blue' },
-        { name: 'SQL', value: 55, color: 'yellow' }
+        { name: 'Python', value: 55, color: 'green' },
+        { name: 'Java', value: 65, color: 'orange' },
+        { name: 'C/C++', value: 45, color: 'blue' },
+        { name: 'SQL', value: 50, color: 'yellow' }
+      ],
+      skills: [
+        { name: 'Git', value: 80, color: 'black' },
+        { name: 'Docker', value: 50, color: 'blue' },
+        { name: 'Docs', value: 60, color: 'purple' }
       ],
       tabs: [
-        { name: 'Javascript', target: 0 },
-        { name: 'Python', target: 1 },
-        { name: 'Java', target: 2 },
-        { name: 'C/C++', target: 3 },
-        { name: 'SQL', target: 4 }
+        { name: 'Language', target: 0 },
+        { name: 'Skills', target: 1 }
       ],
-      activeTab: 0
+      activeTab: 0,
+      abilityTitle: 'Skills'
     }
+  },
+  created () {
+    this.HelloWorld = this.HelloWorldList[this.HelloWorldIndex++]
   },
   mounted () {
     // 마운트 이후 스크롤 리스너 등록
     document.addEventListener('scroll', this.scrollHandler)
+
+    // 타이틀 글자 타이핑
+    setTimeout(this.titleType, 2000)
   },
   beforeDestroy () {
     // 컴포넌트 파괴 전 등록했던 리스너 제거
     document.removeEventListener('scroll', this.scrollHandler)
   },
   methods: {
+    titleType () {
+      let str = this.HelloWorld
+      if (this.write) {
+        if (str.length !== this.HelloWorldList[this.HelloWorldIndex].length) {
+          this.HelloWorld = this.HelloWorldList[this.HelloWorldIndex].substring(0, str.length + 1)
+          setTimeout(this.titleType, 150)
+        } else {
+          this.HelloWorldIndex++
+          this.write = false
+          setTimeout(this.titleType, 750)
+        }
+      } else {
+        if (str.length === 0) {
+          if (this.HelloWorldList.length === this.HelloWorldIndex) {
+            this.HelloWorldIndex = 0
+          }
+          this.write = true
+        } else {
+          this.HelloWorld = str.substring(0, str.length - 1)
+        }
+        setTimeout(this.titleType, 150)
+      }
+    },
     scrollHandler () {
       // 모든 .content 엘리먼트
       const els = document.getElementsByClassName('content')
@@ -279,6 +238,16 @@ export default {
     top: 14.6875rem;
   }
 
+  .cursor {
+    display: inline-block;
+    position: absolute;
+    top: .2rem;
+    width: 3px;
+    height: 1.6rem;
+    margin-left: 4px;
+    background-color: #fff;
+  }
+
   animation: slide-up 1s ease forwards;
   -webkit-animation: slide-up 1s ease forwards;
   -moz-animation: slide-up 1s ease forwards;
@@ -326,7 +295,7 @@ export default {
     font-family: 'NanumSquareRound', 고딕;
     padding: 25px 10px;
     background-color: #fff;
-    overflow-x: hidden;
+    overflow: hidden;
 
     .content-title {
 
@@ -462,53 +431,68 @@ export default {
       animation: slide-right-left 1s 1.25s ease forwards;
     }
 
-    .skills {
+    .ability {
       height: auto;
       opacity: 0;
 
-      .skill-content {
-        display: flex;
-        justify-content: space-around;
+      .ability-content {
         margin: 25px 0;
 
         @media only screen and (min-width: 320px) {
-          flex-direction: column;
+          padding: 0;
         }
 
         @media only screen and (min-width: 768px) {
-          flex-direction: row;
           padding: 0 10%;
         }
 
-        .skill-chart {
+        .ability-chart {
+          display: inline-block;
           box-sizing: border-box;
           padding: 10px;
-          padding-right: 35px;
-          border: 3px solid #eee;
-          border-radius: 16px;
 
           @media only screen and (min-width: 320px) {
-            width: 100%;
+            padding: 10px 25px;
+            padding-top: 25px;
           }
 
           @media only screen and (min-width: 768px) {
-            width: 50%;
+            padding-right: 35px;
           }
+
+          border: 3px solid #eee;
+          border-radius: 16px;
+          width: 100%;
 
           .chart-line {
             float: right;
             position: relative;
-            width: 80%;
             height: 5px;
             background-color: #ccc;
             margin: 20px 0;
 
+            @media only screen and (min-width: 320px) {
+              width: 100%;
+            }
+
+            @media only screen and (min-width: 768px) {
+              width: 80%;
+            }
+
             .chart-name {
               position: absolute;
-              left: -20%;
-              top: -6px;
               color: #888;
               font-weight: bold;
+
+              @media only screen and (min-width: 320px) {
+                left: 0;
+                top: -20px;
+              }
+
+              @media only screen and (min-width: 768px) {
+                left: -20%;
+                top: -6px;
+              }
             }
 
             .chart-line-color {
@@ -539,6 +523,10 @@ export default {
 
               &.purple {
                 background-color: #6b4dac;
+              }
+
+              &.black {
+                background-color: $matte-black;
               }
             }
 
@@ -571,18 +559,24 @@ export default {
               &.purple {
                 background-color: #6b4dac;
               }
+
+              &.black {
+                background-color: $matte-black;
+              }
             }
           }
         }
 
-        .skill-detail {
+        .ability-detail {
+          margin: auto;
+
           @media only screen and (min-width: 320px) {
             width: 100%;
             margin-top: 25px;
           }
 
           @media only screen and (min-width: 768px) {
-            width: 50%;
+            width: 70%;
             margin-top: 0px;
           }
 
