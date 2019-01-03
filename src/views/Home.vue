@@ -73,6 +73,16 @@
                 </div>
               </div>
               <div class="tab-item" :key="1" v-if="activeTab === 1">
+                <h2>Development</h2>
+                <div class="ability-chart">
+                  <div class="chart-line" v-for="(development, i) of development" :key="i">
+                    <div class="chart-name">{{ development.name }}</div>
+                    <div class="chart-line-color" :class="development.color" :style="'width:' + development.value + '%'"></div>
+                    <div class="chart-point" :class="development.color" :style="'top: -5px; left:' + development.value + '%'"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-item" :key="2" v-if="activeTab === 2">
                 <h2>Skills</h2>
                 <div class="ability-chart">
                   <div class="chart-line" v-for="(skill, i) of skills" :key="i">
@@ -112,9 +122,9 @@ export default {
       HelloWorld: '',
       HelloWorldList: [
         'Hello, World!',
-        'AA!',
-        'BB!',
-        'CC!'
+        'Mobile & Desktop support',
+        'Responsive design!',
+        'Vue.js + Vuex + Vue-Router'
       ],
       HelloWorldIndex: 0,
       language: [
@@ -124,14 +134,23 @@ export default {
         { name: 'C/C++', value: 45, color: 'blue' },
         { name: 'SQL', value: 50, color: 'yellow' }
       ],
+      development: [
+        { name: 'Vue.js', value: 85, color: 'vue' },
+        { name: 'Node.js', value: 80, color: 'node' },
+        { name: 'Electron Web App', value: 60, color: 'electron' },
+        { name: 'Reponsive Design', value: 65, color: 'red' }
+      ],
       skills: [
         { name: 'Git', value: 80, color: 'black' },
-        { name: 'Docker', value: 50, color: 'blue' },
-        { name: 'Docs', value: 60, color: 'purple' }
+        { name: 'Docker', value: 40, color: 'blue' },
+        { name: 'Linux', value: 50, color: 'orange' },
+        { name: 'Docs', value: 60, color: 'purple' },
+        { name: 'Algorithm', value: 50, color: 'green' }
       ],
       tabs: [
         { name: 'Language', target: 0 },
-        { name: 'Skills', target: 1 }
+        { name: 'Development', target: 1 },
+        { name: 'Skills', target: 2 }
       ],
       activeTab: 0,
       abilityTitle: 'Skills'
@@ -224,18 +243,20 @@ export default {
   -moz-transform: translate(-50%, 27.5rem);
   color: #fff;
   font-family: 'Comfortaa', 'Avenir', sans-serif, Tahoma;
-  font-size: 1.8rem;
 
   @media only screen and (min-width: 320px) {
     top: 10.3125rem;
+    font-size: 1.5rem;
   }
 
   @media only screen and (min-width: 768px) {
     top: 12.1875rem;
+    font-size: 1.8rem;
   }
 
   @media only screen and (min-width : 1224px) {
     top: 14.6875rem;
+    font-size: 1.8rem;
   }
 
   .cursor {
@@ -450,12 +471,12 @@ export default {
           display: inline-block;
           box-sizing: border-box;
 
-          @media only screen and (min-width: 320px) {
+          @media only screen and (min-width: 320px), (min-width: 768px) {
             padding: 10px 25px;
             padding-top: 25px;
           }
 
-          @media only screen and (min-width: 768px) {
+          @media only screen and (min-width: 1224px) {
             padding: 10px;
             padding-right: 35px;
           }
@@ -471,11 +492,11 @@ export default {
             background-color: #ccc;
             margin: 20px 0;
 
-            @media only screen and (min-width: 320px) {
+            @media only screen and (min-width: 320px), (min-width: 768px) {
               width: 100%;
             }
 
-            @media only screen and (min-width: 768px) {
+            @media only screen and (min-width: 1224px) {
               width: 80%;
             }
 
@@ -484,12 +505,12 @@ export default {
               color: #888;
               font-weight: bold;
 
-              @media only screen and (min-width: 320px) {
+              @media only screen and (min-width: 320px), (min-width: 768px) {
                 left: 0;
                 top: -20px;
               }
 
-              @media only screen and (min-width: 768px) {
+              @media only screen and (min-width: 1224px) {
                 left: -20%;
                 top: -6px;
               }
@@ -528,6 +549,18 @@ export default {
               &.black {
                 background-color: $matte-black;
               }
+
+              &.vue {
+                background-color: #41b883;
+              }
+
+              &.node {
+                background-color: #5f9b5d;
+              }
+
+              &.electron {
+                background-color: #9feaf9;
+              }
             }
 
             .chart-point {
@@ -562,6 +595,18 @@ export default {
 
               &.black {
                 background-color: $matte-black;
+              }
+
+              &.vue {
+                background-color: #41b883;
+              }
+
+              &.node {
+                background-color: #5f9b5d;
+              }
+
+              &.electron {
+                background-color: #9feaf9;
               }
             }
           }
