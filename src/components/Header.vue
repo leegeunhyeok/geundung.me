@@ -41,7 +41,7 @@ export default {
       font-size: 1.6rem;
     }
 
-    @media only screen  and (min-width : 1224px) {
+    @media only screen  and (min-width: 1224px) {
       font-size: 1.8rem;
     }
 

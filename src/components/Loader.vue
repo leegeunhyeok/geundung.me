@@ -66,7 +66,7 @@ export default {
       height: 250px;
     }
 
-    @media only screen  and (min-width : 1224px) {
+    @media only screen  and (min-width: 1224px) {
       width: 300px;
       height: 300px;
     }
@@ -110,7 +110,7 @@ export default {
         line-height: 218px;
       }
 
-      @media only screen  and (min-width : 1224px) {
+      @media only screen  and (min-width: 1224px) {
         left: 20px;
         right: 20px;
         top: 20px;

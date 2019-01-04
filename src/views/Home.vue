@@ -261,7 +261,7 @@ export default {
     font-size: 1.8rem;
   }
 
-  @media only screen and (min-width : 1224px) {
+  @media only screen and (min-width: 1224px) {
     top: 14.6875rem;
     font-size: 1.8rem;
   }
@@ -304,7 +304,7 @@ export default {
   width: 100%;
   box-sizing: border-box;
   z-index: 5;
-  margin-bottom: 100px;
+  margin-bottom: 400px;
   transition: margin-top .3s;
 
   @media only screen and (min-width: 320px) {
@@ -315,7 +315,7 @@ export default {
     margin-top: 360px;
   }
 
-  @media only screen  and (min-width : 1224px) {
+  @media only screen  and (min-width: 1224px) {
     margin-top: 440px;
   }
 
@@ -335,7 +335,7 @@ export default {
         font-size: 1.7rem;
       }
 
-      @media only screen  and (min-width : 1224px) {
+      @media only screen  and (min-width: 1224px) {
         font-size: 1.8rem;
       }
 
@@ -372,7 +372,7 @@ export default {
             cursor: pointer;
             transition: .3s;
 
-            &:hover {
+            &:hover, &:active {
               color: dodgerblue;
             }
           }
@@ -399,7 +399,7 @@ export default {
           padding: 0 5%;
         }
 
-        @media only screen  and (min-width : 1224px) {
+        @media only screen  and (min-width: 1224px) {
           flex-direction: row;
           padding: 0 10%;
         }
@@ -423,15 +423,15 @@ export default {
             transition: .3s;
           }
 
-          &.red:hover {
+          &.red:hover, &.red:active {
             color: #e73c7e;
           }
 
-          &.yellow:hover {
+          &.yellow:hover, &.yellow:active {
             color: #f7b438;
           }
 
-          &.green:hover {
+          &.green:hover, &.green:active {
             color: #23d5ab;
           }
 
@@ -447,7 +447,7 @@ export default {
               padding: 0 15%;
             }
 
-            @media only screen  and (min-width : 1224px) {
+            @media only screen  and (min-width: 1224px) {
               padding: 0 22%;
             }
           }
@@ -470,7 +470,7 @@ export default {
           padding: 0;
         }
 
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 768px), (min-width: 1224px) {
           padding: 0 10%;
         }
 
@@ -654,16 +654,21 @@ export default {
       opacity: 0;
 
       .projects-wrap {
-        display: flex;
-        flex-wrap: wrap;
+        column-gap: 1.5rem;
 
         @media only screen and (min-width: 320px) {
-          flex-direction: column;
+          column-count: 1;
+          padding: 0;
         }
 
-        @media only screen and (min-width: 768px), (min-width : 1224px) {
-          flex-direction: row;
-          justify-content: space-around;
+        @media only screen and (min-width: 768px) {
+          column-count: 2;
+          padding: 0 10%;
+        }
+
+        @media only screen and (min-width: 1224px) {
+          column-count: 3;
+          padding: 0 10%;
         }
       }
     }
