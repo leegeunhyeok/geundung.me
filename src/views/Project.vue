@@ -47,7 +47,7 @@ export default {
 }
 
 .project-enter, .project-leave-to {
-  transform: translateY(400px);
+  transform: translateY(300px);
 }
 
 </style>
