@@ -104,6 +104,7 @@
           </div>
         </div>
       </div>
+      <app-footer/>
     </div>
   </div>
 </template>
@@ -111,6 +112,7 @@
 <script>
 import ProjectModel from '@/model/project'
 
+import Footer from '@/components/Footer.vue'
 import Gradient from '@/components/Gradient'
 import Tab from '@/components/Tab'
 import ProjectItem from '@/components/ProjectItem'
@@ -120,7 +122,8 @@ export default {
   components: {
     Gradient,
     Tab,
-    ProjectItem
+    ProjectItem,
+    'app-footer': Footer
   },
   data () {
     return {
@@ -304,7 +307,6 @@ export default {
   width: 100%;
   box-sizing: border-box;
   z-index: 5;
-  margin-bottom: 400px;
   transition: margin-top .3s;
 
   @media only screen and (min-width: 320px) {

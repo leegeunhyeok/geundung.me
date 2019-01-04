@@ -2,21 +2,18 @@
   <div id="app">
     <app-header/>
     <router-view v-show="$store.state.loaded"/>
-    <app-footer/>
     <app-loader v-if="!$store.state.loaded"/>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
 import Loader from '@/components/Loader.vue'
 
 export default {
   name: 'app',
   components: {
     'app-header': Header,
-    'app-footer': Footer,
     'app-loader': Loader
   }
 }
