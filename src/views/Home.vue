@@ -437,6 +437,26 @@ export default {
             color: #23d5ab;
           }
 
+          @media only screen and (min-width: 320px), (min-width: 768px) {
+            &.red {
+              color: #e73c7e;
+            }
+
+            &.yellow {
+              color: #f7b438;
+            }
+
+            &.green {
+              color: #23d5ab;
+            }
+          }
+
+          @media only screen  and (min-width: 1224px) {
+            &.red, &.yellow, &.green {
+              color: #000;
+            }
+          }
+
           p {
             color: #888;
             line-height: 150%;
